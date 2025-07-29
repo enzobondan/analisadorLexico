@@ -1,0 +1,29 @@
+int x = 10;
+float y = 3.14;
+if (x > y) {
+    return "maior";
+}
+
+x += 1;
+string a =
+
+
+//agora um pouco de erros
+
+int _val = 12;        // válido
+x$ = 10;              // caractere inválido $
+"string sem fim       // string malformada
+"e assim?"
+.12;
+0.
+11.1
+3..14                 // número malformado
+@abc@                  // caractere inválido @
+!int xb/*teste*/ = /*teste2*/'oi'
+//int valb = 11; 
+
+a**1
+
+2**1
+
+a = 2**2
