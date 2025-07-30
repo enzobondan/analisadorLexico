@@ -15,20 +15,20 @@ class Lexer:
         )
 
     def tokenize(self, code: str):
-        pos = 0              # Posição atual no código fonte
-        line = 1             # Número da linha atual para rastreamento de erros
-        tokens = []          # Lista para armazenar tokens reconhecidos
-        erros = []           # Lista para armazenar mensagens de erro léxico
+        pos = 0              # Posição atual
+        line = 1             # Número da linha atual
+        tokens = []
+        erros = [] 
 
-        lines = code.splitlines()  # Quebra o código em linhas para mensagens de erro e posicionamento
-        current_line_start = 0     # Índice de início da linha atual no texto completo
+        lines = code.splitlines()  # Quebra o código em linhas em uma lista
+        current_line_start = 0
 
         while pos < len(code):
-            match = self.token_regex.match(code, pos)  # Tenta casar um token a partir da posição atual
+            match = self.token_regex.match(code, pos)  # Tenta casar um token
             if not match:
                 # Nenhum token reconhecido na posição atual - caractere inválido
-                line_text = lines[line - 1] if line - 1 < len(lines) else ""
-                col = pos - current_line_start
+                line_text = lines[line - 1] if line - 1 < len(lines) else "" #pega toda a linha
+                col = pos - current_line_start # posição do caractere para inserir a setinha ^
                 char = code[pos]
 
                 erro = (
@@ -41,7 +41,7 @@ class Lexer:
                 continue
 
             kind = match.lastgroup  # Nome do grupo regex que casou (tipo do token)
-            lexeme = match.group(kind)  # Texto capturado para o token
+            lexeme = match.group(kind)  # Texto capturado casado para o token
 
             if kind == "STRING_UNCLOSED":
                 # Trata string sem fechamento, erro léxico específico
